@@ -26,6 +26,11 @@ impl From<&str> for Selector {
         // Make common UI roles like "window", "button", etc. default to Role selectors
         // instead of Name selectors
         match s {
+            // if role:button 
+            _ if s.starts_with("role:") => Selector::Role {
+                role: s[5..].to_string(),
+                name: None,
+            },
             "app" | "application" | "window" | "button" | "checkbox" | "menu" | "menuitem" | "menubar" | "textfield"
             | "input" => Selector::Role {
                 role: s.to_string(),
@@ -47,7 +52,7 @@ impl From<&str> for Selector {
                     name: Some(parts[1].to_string()),
                 }
             }
-            _ if s.starts_with('#') => Selector::Id(s[1..].to_string()),
+            _ if s.starts_with('#') || s.starts_with("id:") => Selector::Id(s[1..].to_string()),
             _ if s.starts_with('/') => Selector::Path(s.to_string()),
             _ if s.starts_with("text:") => Selector::Text(s[5..].to_string()),
             _ => Selector::Name(s.to_string()),
