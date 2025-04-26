@@ -1,4 +1,4 @@
-const DEFAULT_BASE_URL = "http://127.0.0.1:3000";
+const DEFAULT_BASE_URL = "http://127.0.0.1:9375";
 
 // --- Interfaces for API Payloads and Responses matching server.rs --- //
 

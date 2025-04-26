@@ -35,7 +35,7 @@ Open a new terminal (like PowerShell or Command Prompt) **separate from the one 
 
     You can use this PowerShell command **while inside the `mcp` directory** to generate the correct JSON content:
 
-    ```powershell
+```powershell
     # Run this command inside the terminator/mcp directory
     $mcpPath = ($pwd).Path.Replace('\', '\\') + '\\dist\\index.js'
     $jsonContent = @"
@@ -55,7 +55,7 @@ Open a new terminal (like PowerShell or Command Prompt) **separate from the one 
     Write-Host "------------------------------------------------------------------------------------------"
     # Optional: Try to automatically open the directory
     Start-Process "$env:USERPROFILE\.cursor" -ErrorAction SilentlyContinue
-    ```
+```
 
     *   Run the PowerShell command above.
     *   Copy the JSON output (starting with `{` and ending with `}`).

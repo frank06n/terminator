@@ -10,7 +10,7 @@ import {
   RunCommandSchema,
   ExploreSchema,
   CaptureScreenSchema,
-} from "./terminator.js"; // Import the wrapper class and schemas
+} from "./terminator"; // Import the wrapper class and schemas
 
 // --- Configuration ---
 // You might want to load this from .env or config files

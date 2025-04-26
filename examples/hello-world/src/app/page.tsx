@@ -4,7 +4,7 @@ import React, { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import SdkFeatureCard from "@/components/SdkFeatureCard"; // Corrected path
 import LogConsole from "@/components/LogConsole"; // Corrected path
-import { getSdkClient, ApiError } from "@/lib/sdk"; // Corrected path
+import { getSdkClient } from "@/lib/sdk"; // Corrected path
 import { sleep } from "@/lib/utils"; // We'll need a sleep function
 
 interface LogMessage {
@@ -184,39 +184,39 @@ export default function HomePage() {
          // You could store response.image_base64 if needed for OCR etc.
        },
      },
-    // {
-    //     id: "ocrScreen",
-    //     title: "OCR Screen",
-    //     description: "Captures the screen and performs OCR on it.",
-    //     codeSnippet: `const client = getSdkClient();\nconst screen = await client.captureScreen();\nconst ocrResult = await client.ocrScreenshot({\n imageBase64: screen.image_base64,\n width: screen.width,\n height: screen.height\n});\nconsole.log(ocrResult.text);`,
-    //     action: async (addLog) => {
-    //         addLog("info", "Capturing screen for OCR...");
-    //         const client = getSdkClient();
-    //         const screen = await client.captureScreen();
-    //         addLog("info", `Screen captured (${screen.width}x${screen.height}). Performing OCR...`);
-    //         const ocrResult = await client.ocrScreenshot({
-    //             imageBase64: screen.image_base64,
-    //             width: screen.width,
-    //             height: screen.height
-    //         });
-    //         addLog("success", `OCR completed.`);
-    //         addLog("sdk-out", `OCR Text (truncated): ${ocrResult.text.substring(0, 100)}...`);
-    //     },
-    // },
-    //   {
-    //    id: "activateBrowser",
-    //    title: "Activate Browser Window",
-    //    description: "Activates browser window by title (e.g., 'Google'). Requires a matching window.",
-    //    codeSnippet: `const client = getSdkClient();\nawait client.activateBrowserWindowByTitle('Google');`,
-    //    action: async (addLog) => {
-    //      const title = 'Google'; // Example title
-    //      addLog("info", `Attempting to activate browser window with title containing: "${title}"`);
-    //      const client = getSdkClient();
-    //      const response = await client.activateBrowserWindowByTitle(title);
-    //      addLog("success", `Activate browser request sent: ${response.message}`);
-    //    },
-    //  },
-     // Example: Type into Notepad (more complex, requires locator)
+    {
+        id: "ocrScreen",
+        title: "OCR Screen",
+        description: "Captures the screen and performs OCR on it.",
+        codeSnippet: `const client = getSdkClient();\nconst screen = await client.captureScreen();\nconst ocrResult = await client.ocrScreenshot({\n imageBase64: screen.image_base64,\n width: screen.width,\n height: screen.height\n});\nconsole.log(ocrResult.text);`,
+        action: async (addLog) => {
+            addLog("info", "Capturing screen for OCR...");
+            const client = getSdkClient();
+            const screen = await client.captureScreen();
+            addLog("info", `Screen captured (${screen.width}x${screen.height}). Performing OCR...`);
+            const ocrResult = await client.ocrScreenshot({
+                imageBase64: screen.image_base64,
+                width: screen.width,
+                height: screen.height
+            });
+            addLog("success", `OCR completed.`);
+            addLog("sdk-out", `OCR Text (truncated): ${ocrResult.text.substring(0, 100)}...`);
+        },
+    },
+      {
+       id: "activateBrowser",
+       title: "Activate Browser Window",
+       description: "Activates browser window by title (e.g., 'Google'). Requires a matching window.",
+       codeSnippet: `const client = getSdkClient();\nawait client.activateBrowserWindowByTitle('Google');`,
+       action: async (addLog) => {
+         const title = 'Google'; // Example title
+         addLog("info", `Attempting to activate browser window with title containing: "${title}"`);
+         const client = getSdkClient();
+         const response = await client.activateBrowserWindowByTitle(title);
+         addLog("success", `Activate browser request sent: ${response.message}`);
+       },
+     },
+    //  Example: Type into Notepad (more complex, requires locator)
 
   ];
 
